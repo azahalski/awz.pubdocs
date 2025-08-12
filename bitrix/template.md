@@ -37,4 +37,27 @@ $APPLICATION->IncludeComponent("awz:cookies.sett",".default",
 ?>
 ```
 
+## Буферизация контента через отложенные функции
+
+### template.php
+
+```php
+$this->SetViewTarget('min_description');
+?>
+<div class="row">
+    <div class="desc">
+    <?=$arResult["PREVIEW_TEXT"]?>
+    
+</div>
+</div>
+<?php
+$this->EndViewTarget();
+```
+
+### Вывод вне кеша
+
+```php
+<?$APPLICATION->ShowViewContent('min_description');?>
+```
+
 <!-- desc-end -->
