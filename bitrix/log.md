@@ -56,7 +56,7 @@ class CustomPayLogger {
 
 ## 3. Включаем логирование
 
-/bitrix/.settings_extra.php [Документация Битрикс](https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=15330&LESSON_PATH=3913.3516.5062.15330)
+/bitrix/.settings_extra.php - [документация Битрикс](https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=15330&LESSON_PATH=3913.3516.5062.15330)
 
 ```php 
 <?php
