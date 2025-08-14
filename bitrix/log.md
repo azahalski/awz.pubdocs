@@ -97,4 +97,10 @@ $log?->debug(
 );
 ```
 
+Если не нужен класс расширение, то можно обращаться по названию лога
+
+```php
+$log = \Bitrix\Main\Diag\Logger::create('CustomPayLogger', [null]);
+```
+
 <!-- desc-end -->
