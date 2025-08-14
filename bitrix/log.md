@@ -44,7 +44,7 @@ trait AwzBaseInstance {
 include_once($_SERVER['DOCUMENT_ROOT']."/bitrix/php_interface/AwzBaseInstance.php");
 ```
 
-## 2. Cоздаем класс-логеер
+## 2. Cоздаем класс-логер
 
 Можно разместить в init.php, чтобы был доступен везде
 
@@ -68,7 +68,7 @@ $finalSett['loggers']['value'] = $finalSett['loggers']['value'] ?? [];
 $finalSett['loggers']['value']['CustomPayLogger'] = [
     'className' => '\\Bitrix\\Main\\Diag\\FileLogger',
     'constructorParams' => function(){
-        return [$_SERVER['DOCUMENT_ROOT'].'/local/logs/awz.log.CustomPayLogger'];
+        return [$_SERVER['DOCUMENT_ROOT'].'/local/logs/awz.log.CustomPayLogger.log'];
     },
     'level' => \Psr\Log\LogLevel::DEBUG
 ];
