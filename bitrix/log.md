@@ -85,8 +85,8 @@ define("DisableEventsCheck", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
 $log = CustomPayLogger::getInstance()->getLogger();
-
-$debugInfo = http_build_query($request->toArray(), "", "\n");
+$request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
+$debugInfo = http_build_query($request->toArray());
 
 $log?->debug(
     "[sale_ps_result.php - request] | {date} | {debugInfo} | {php_input}\n",
