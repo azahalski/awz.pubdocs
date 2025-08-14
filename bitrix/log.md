@@ -1,7 +1,7 @@
 # Файловый PSR лог в Bitrix
 <!-- desc-start -->
 
-## 0. Пример использования
+## Пример использования
 
 ```php 
 define("STOP_STATISTICS", true);
