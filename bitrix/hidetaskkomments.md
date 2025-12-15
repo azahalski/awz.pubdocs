@@ -1,3 +1,5 @@
+# Скрываем системные сообщения с чатов задач Битрикс24
+<!-- desc-start -->
 ## 1. Поиск и Установка расширения для работы с css
 
 Пример настройки через расширение [StyleBot](https://chromewebstore.google.com/detail/stylebot/oiaejidbmkiecgbjeifoejpgmdaleoha)
@@ -17,3 +19,5 @@
   display: none;
 }
 ```
+
+<!-- desc-end -->
