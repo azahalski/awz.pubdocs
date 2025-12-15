@@ -1,6 +1,16 @@
 # Плюшки шаблонов Bitrix
 <!-- desc-start -->
 
+## Подмена языковых переменных
+
+разместить файл в bitrix/php_interface/user_lang/ru/lang.php
+
+```php 
+<?
+$MESS['/bitrix/modules/awz.autform/lang/ru/lib/handlers.php']["AWZ_AUTFORM_HANDLERS_MLIFE_SMS_PHONE_ERR"] = 'Вводите телефон в формате: 79217776655';
+$MESS['/bitrix/modules/awz.autform/lang/ru/lib/handlersv2.php']["AWZ_AUTFORM_HANDLERSV2_PHONE_ERR"] = 'Вводите телефон в формате: 79217776655';
+```
+
 ## Прокинуть данные из кеша в component_epilog.php
 
 ### result_modifier.php
@@ -41,6 +51,12 @@ $APPLICATION->IncludeComponent("awz:cookies.sett",".default",
 
 ### template.php
 
+
+
+```php 
+<?$APPLICATION->AddViewContent('min_description','content');?>
+```
+
 ```php
 $this->SetViewTarget('min_description');
 ?>
@@ -58,6 +74,20 @@ $this->EndViewTarget();
 
 ```php
 <?$APPLICATION->ShowViewContent('min_description');?>
+```
+
+### Запрет перемещения скрипта
+
+```
+<script type=”text/javascript” data-skip-moving="true" src=""></script>
+```
+
+## Строки
+
+### Безопасный вывод данных
+
+```php
+alt="<?=htmlspecialcharsEx($arResult['NAME'])?>"
 ```
 
 <!-- desc-end -->
