@@ -46,35 +46,35 @@ public static function compileTemplate($template, &$macros){
 
 ```php 
 public static function compileTemplate($template, &$macros){
-    $arParams = array();
-    foreach($macros as $k=>&$v){
-        if(is_array($v)) continue;
-        $arParams[str_replace("#","",$k)] = $v;
-        
-        // 2. УДАЛЯЕМ теги <?php
-        $vClean = preg_replace('/<\?(php)?/i', '', $v);
-        $vClean = str_replace('?>', '', $vClean);
-        
-        // 3. УДАЛЯЕМ знак доллара (запрет вызова переменных)
-        $vClean = str_replace('$', '', $vClean);
-        
-        // 4. ЭКРАНИРУЕМ кавычки и теги через Битрикс-функцию
-        $v = \htmlspecialcharsEx($vClean);
-    }
-    unset($v);
-    
-    // ПРОВЕРКА: Вызываем executePhp только при наличии PHP-кода в шаблоне
+	$arParams = array();
+	foreach($macros as $k=>&$v){
+		if(is_array($v)) continue;
+		$arParams[str_replace("#","",$k)] = $v;
+
+		// 2. УДАЛЯЕМ теги <?php
+		$vClean = preg_replace('/<\?(php)?/i', '', $v);
+		$vClean = str_replace('?>', '', $vClean);
+
+		// 3. УДАЛЯЕМ знак доллара (запрет вызова переменных)
+		if (stripos($template, '<?') !== false)
+			$vClean = str_replace('$', '', $vClean);
+		$v = $vClean;
+	}
+	unset($v);
+
+	// ПРОВЕРКА: Вызываем executePhp только при наличии PHP-кода в шаблоне
 	if (stripos($template, '<?') !== false) {
+		// для совместимости со старыми версиями, вместо макросов в php лучше использовать $arParams
 		$template = str_replace(array_keys($macros), $macros, $template);
 		$template = self::executePhp($template, $macros, $arParams);
 	}else{
 		$template = str_replace(array_keys($macros), $macros, $template);
 	}
-    foreach($arParams as $k=>$v){
-        $macros['#'.$k.'#'] = $v;
-    }
-    //$template = preg_replace('/(\#[^#]+\#)/is',"",$template);
-    return $template;
+	foreach($arParams as $k=>$v){
+		$macros['#'.$k.'#'] = $v;
+	}
+	//$template = preg_replace('/(\#[^#]+\#)/is',"",$template);
+	return $template;
 }
 ```
 
