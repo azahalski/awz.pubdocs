@@ -63,8 +63,13 @@ public static function compileTemplate($template, &$macros){
     }
     unset($v);
     
-    $template = str_replace(array_keys($macros), $macros, $template);
-    $template = self::executePhp($template,$macros,$arParams);
+    // ПРОВЕРКА: Вызываем executePhp только при наличии PHP-кода в шаблоне
+	if (stripos($template, '<?') !== false) {
+		$template = str_replace(array_keys($macros), $macros, $template);
+		$template = self::executePhp($template, $macros, $arParams);
+	}else{
+		$template = str_replace(array_keys($macros), $macros, $template);
+	}
     foreach($arParams as $k=>$v){
         $macros['#'.$k.'#'] = $v;
     }
