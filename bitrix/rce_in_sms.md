@@ -1,5 +1,7 @@
 # Критическая уязвимость в модулях отправки смс
 
+<!-- desc-start -->
+
 **Модули подверженные уязвимости**:
 
 mlife.smsservices, targetsms.sms, sms96ru.sms
@@ -86,3 +88,5 @@ public static function compileTemplate($template, &$macros){
 ```
 Ваш заказ на сумму #PRICE# принят.
 ```
+
+<!-- desc-end -->
